@@ -1,0 +1,12 @@
+gradio>=6.0
+numpy
+pandas
+scikit-learn
+xgboost
+shap
+tensorflow-cpu
+opencv-python-headless
+mediapipe
+plotly
+joblib
+pillow
