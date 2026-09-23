@@ -1,9 +1,38 @@
-import gradio as gr
-import bm_app2
+from flask import Flask, jsonify, request
 
-# Build the Gradio application
-demo, _ = bm_app2.build_app()
+app = Flask(__name__)
 
-# Vercel's Python runtime needs a top-level WSGI/ASGI-compatible app.
-# Gradio exposes the underlying application through demo.app.
-app = demo.app
+
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "status": "success",
+        "message": "BeautyMind AI API is running"
+    })
+
+
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({
+        "status": "healthy"
+    })
+
+
+@app.route("/api/analyze", methods=["POST"])
+def analyze():
+    data = request.get_json(silent=True) or {}
+
+    # TODO:
+    # Put your BeautyMind AI processing logic here.
+    # Example:
+    # result = your_beautymind_function(data)
+
+    return jsonify({
+        "status": "success",
+        "message": "Analysis endpoint is working",
+        "received": data
+    })
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
