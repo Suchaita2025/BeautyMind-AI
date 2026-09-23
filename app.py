@@ -22,11 +22,6 @@ def health():
 def analyze():
     data = request.get_json(silent=True) or {}
 
-    # TODO:
-    # Put your BeautyMind AI processing logic here.
-    # Example:
-    # result = your_beautymind_function(data)
-
     return jsonify({
         "status": "success",
         "message": "Analysis endpoint is working",
